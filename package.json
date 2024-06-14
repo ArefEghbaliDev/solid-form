@@ -1,0 +1,19 @@
+{
+  "name": "solid-form-mono",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple form validation library for solidjs",
+  "main": "index.js",
+  "workspace": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "run:app": "pnpm --filter example dev",
+    "build:lib": "pnpm --filter @rf/solid-form build",
+    "update:lib": "pnpm --filter example add @rf/solid-form"
+  },
+  "keywords": [],
+  "author": "Aref Eghbali",
+  "license": "MIT"
+}
