@@ -21,6 +21,7 @@ A powerful and flexible form validation library for Solid.js applications that i
   - [Usage](#usage)
   
 - [Props](#props)
+- [API](#api)
 
 # Getting Started
 
@@ -116,6 +117,3 @@ import { useForm } from "solid-form";
 ## 📝 Licence
 
 MIT
-
-- Icons are taken from the other projects so please check each project licences accordingly.
-
