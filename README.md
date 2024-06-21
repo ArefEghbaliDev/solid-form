@@ -30,19 +30,19 @@ A powerful and flexible form validation library for Solid.js applications that i
 ### Yarn
 
 ```bash
-yarn add solid-form
+yarn add @rf/solid-form
 ```
 
 ### PNPM
 
 ```bash
-pnpm add solid-form
+pnpm add @rf/solid-form
 ```
 
 ### NPM
 
 ```bash
-npm install solid-form --save
+npm install @rf/solid-form --save
 ```
 
 ## Usage
@@ -74,7 +74,7 @@ import { useForm } from "solid-form";
       password: "",
     },
     onSubmit: (values) => {
-      console.log(values.email, values.password);
+      // do something with validated values
     },
   });
 
@@ -83,12 +83,35 @@ import { useForm } from "solid-form";
 ### Use it on your inputs
 **Note: as mentioned above, you need to pass the `onInput` function to the input onInput event not onChange event.**
 ```jsx
-        <input
-          type="password"
-          name="password"
-          onInput={onInput}
-          value={fields.password}
-        />
+ <input
+  type="password"
+  name="password"
+  onInput={onInput}
+  value={fields.password} />
+```
+
+### Submit form
+You can pass the submitForm function to either a button or the `onSubmit` event of your form.
+
+with button:
+```jsx
+<button type="button" onClick={submitForm}>Submit</button>
+```
+with form onSubmit:
+```jsx
+<form method="post" onSubmit={submitForm}>
+```
+
+## Setting field value and error
+If you want to set a value or error for a specific field you can achieve this by using `setFieldValue` and `setFieldError` functions.
+
+for example to set a value for a field you can do:
+```jsx
+setFieldValue('fieldName', 'fieldValue');
+```
+and to set an error for a field:
+```jsx
+setFieldError('fieldName','fieldError');
 ```
 
 ## Props
@@ -99,7 +122,7 @@ import { useForm } from "solid-form";
 | defaultValues  | `required`       | the default values for your form fields                                                                                                 |
 | onSubmit | `optional` |       the function that runs on form submit if the form is valid                                                                                           |
 | validateOnChange | `boolean(optional)` | validate the form on input value change. default is false                                                                             |
-| validateOnBlur | `boolean(optional)` | validate the form on input blur. default is false                                                                             |
+| validateOnBlur | `boolean(optional)` | validate the form on input blur. default is false. note that to use his you have to pass `onBlur` returned from the hook to your input element.                                                                             |
 
 ## API
 | Field  | Type  | Description  |
@@ -117,3 +140,4 @@ import { useForm } from "solid-form";
 ## 📝 Licence
 
 MIT
+

@@ -6,11 +6,15 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/ArefEghbaliDev/solid-form"
+  },
   "scripts": {
     "build": "tsc && rollup -c"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["solidjs","solid-community","otp","solid-otp"],
+  "author": "Aref Eghbali",
   "license": "ISC",
   "dependencies": {
     "solid-js": "^1.8.17",

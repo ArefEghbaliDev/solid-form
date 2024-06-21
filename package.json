@@ -11,7 +11,8 @@
   "scripts": {
     "run:app": "pnpm --filter example dev",
     "build:lib": "pnpm --filter @rf/solid-form build",
-    "update:lib": "pnpm --filter example add @rf/solid-form"
+    "update:lib": "pnpm --filter example add @rf/solid-form",
+    "publish": "npm publish"
   },
   "keywords": [],
   "author": "Aref Eghbali",

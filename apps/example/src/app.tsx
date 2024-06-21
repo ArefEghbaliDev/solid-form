@@ -1,4 +1,4 @@
-import { Show, createEffect } from "solid-js";
+import { Show } from "solid-js";
 import "./app.css";
 import { useForm } from "@rf/solid-form";
 import { z } from "zod";
@@ -9,7 +9,7 @@ const schema = z.object({
 });
 
 export default function App() {
-    const { fields, errors, submitForm, onChange } = useForm<
+    const { fields, errors, onInput, submitForm } = useForm<
         z.infer<typeof schema>
     >({
         schema: schema,
@@ -18,17 +18,17 @@ export default function App() {
             password: "",
         },
         onSubmit: (values) => {
-            console.log(values.email, values.password);
+            window.alert(values.email)
         },
     });
 
     return (
         <main class="bg-neutral-900 min-h-screen w-full flex items-center justify-center">
-            <form class="flex flex-col items-stretch justify-start gap-4">
+            <form class="flex flex-col items-stretch justify-start gap-4" method="post" onSubmit={submitForm}>
                 <input
                     type="text"
                     name="email"
-                    onInput={onChange}
+                    onInput={onInput}
                     placeholder="Email"
                     value={fields.email}
                     class="rounded bg-transparent border border-white/10 px-2 py-[10px] min-w-[300px] text-white"
@@ -39,7 +39,7 @@ export default function App() {
                 <input
                     type="password"
                     name="password"
-                    onInput={onChange}
+                    onInput={onInput}
                     placeholder="Password"
                     value={fields.password}
                     class="rounded bg-transparent border border-white/10 px-2 py-[10px] min-w-[300px] text-white"
@@ -48,8 +48,7 @@ export default function App() {
                     <span class="text-sm text-rose-400">{errors.password}</span>
                 </Show>
                 <button
-                    type="button"
-                    onClick={submitForm}
+                    type="submit"
                     class="rounded bg-purple-500 text-black py-2 px-4"
                 >
                     Submit Form

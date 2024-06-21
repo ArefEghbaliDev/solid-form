@@ -66,21 +66,22 @@ export function useForm<T extends Object>({
                         flatErrors.fieldErrors[
                         field as keyof typeof defaultValues
                         ] as string[]
-                    )[0];
+                    );
                 } else {
                     mappedErrors[field as keyof typeof defaultValues] = undefined;
                 }
             }
 
             setErrors(mappedErrors);
-
             return false;
         }
 
         return true;
     };
 
-    const submitForm = async () => {
+    const submitForm = async (event: Event) => {
+        event.preventDefault();
+
         const parsed = parseForm();
 
         if (!parsed) return;
